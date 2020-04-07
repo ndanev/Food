@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 const defaultController = require('../controllers/defaultController');
 
+router.get('/*', (req, res, next) => {
+
+    req.app.locals.layout = 'default';
+
+    next();
+});
+
 router.get('/', defaultController.index);
 
 router.get('/login', defaultController.loginGet);

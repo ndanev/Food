@@ -11,4 +11,9 @@ router.get('/*', (req, res, next) => {
 
 router.get('/', adminController.index);
 
+router.get('/posts', adminController.getPosts);
+router.post('/posts', adminController.submitPost);
+
+router.get('/posts/create', adminController.createPost);
+
 module.exports = router;
