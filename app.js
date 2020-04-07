@@ -4,6 +4,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const { db_url, PORT } = require('./config/configuration');
 const defaultRoutes = require('./routes/defaultRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.set('view engine', 'handlebars');
 
 /* Routes */
 app.use('/', defaultRoutes);
+app.use('/admin', adminRoutes);
+
 
 
 app.listen(PORT, () => {
