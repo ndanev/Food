@@ -9,6 +9,6 @@ module.exports = {
         res.send('Posts submitted');
     },
     createPost: (req, res) => {
-        res.send('Create post route');
+        res.render('admin/posts/create');
     }
 }

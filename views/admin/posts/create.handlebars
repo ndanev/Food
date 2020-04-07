@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-2"></div>
+        <div class="col-8">
+            <h1>Create New Post</h1>
+        </div>
+        <div class="offset-2"></div>
+    </div>
+    <div class="row p-4">
+        <div class="offset-md-2"></div>
+        <div class="col-md-8">
+            <form action="/admin/posts/create" method="post">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="title">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select name="status" id="status" class="form-control">
+                        <option value="public">Public</option>
+                        <option value="private">Private</Pption>
+                        <option value="draft">Draft</option>
+                    </select>
+                </div>
+                <div class="form-check ml-3">
+                    <label for="allowComments">
+                        <input type="checkbox" name="allowComments" id="allowComments">
+                        AllowComments
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="description">Content</label>
+                    <textarea name="description" id="description" class="form-control"
+                        placeholder="Enter your content here" rows="10"></textarea>
+                </div>
+                <button class="btn btn-success" type="submit">Create Post</button>
+            </form>
+        </div>
+        <div class="offset-md-2"></div>
+    </div>
+</div>
