@@ -1,10 +1,13 @@
+const { globalVariables } = require('./config/configuration');
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
 const { db_url, PORT } = require('./config/configuration');
-const defaultRoutes = require('./routes/defaultRoutes');
-const adminRoutes = require('./routes/adminRoutes');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 const app = express();
 
@@ -21,11 +24,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* Flash and Session */
+app.use(session({
+    secret: 'anysecret',
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(flash());
+
+app.use(globalVariables);
+
 /* Template Engine */
 app.engine('handlebars', exphbs({ defaultLayout: 'default' }));
 app.set('view engine', 'handlebars');
 
 /* Routes */
+const defaultRoutes = require('./routes/defaultRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 app.use('/', defaultRoutes);
 app.use('/admin', adminRoutes);
 
