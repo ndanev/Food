@@ -8,6 +8,7 @@ const exphbs = require('express-handlebars');
 const { db_url, PORT } = require('./config/configuration');
 const flash = require('connect-flash');
 const session = require('express-session');
+const methodOverride = require('method-override')
 
 const app = express();
 
@@ -38,6 +39,9 @@ app.use(globalVariables);
 /* Template Engine */
 app.engine('handlebars', exphbs({ defaultLayout: 'default' }));
 app.set('view engine', 'handlebars');
+
+// override with POST having ?_method=DELETE
+app.use(methodOverride('newMethod'));
 
 /* Routes */
 const defaultRoutes = require('./routes/defaultRoutes');
