@@ -209,6 +209,34 @@
       setTimeout(function () {
         $('.auto-hide').slideToggle(300);
       }, 3000);
+
+      $('#create-category-button').on('click', function (e) {
+        e.preventDefault();
+
+        var data = $('#category-title').val();
+
+        $.ajax({
+          url: '/admin/category',
+          type: 'POST',
+          data: { name: data },
+          success: function (response) {
+            var html = `
+              <tr>
+                <td>${response.title}</td>
+                  <td class="d-flex justify-content-center">
+                    <a href="/admin/category/edit/${response.id}" class="btn btn-sm btn-warning mr-2" role="button">Edit</a>
+                  </td>
+                    <td>
+                      <form action="/admin/category/${response.id}?newMethod=DELETE" method="post">
+                        <button class="btn btn-sm btn-danger" type="submit">x</button>
+                      </form>
+                    </td>
+              </tr>
+            `
+            $(".category-list").append(html);
+          }
+        });
+      });
     });
 
   </script>

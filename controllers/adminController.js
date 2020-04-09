@@ -1,11 +1,12 @@
 const Post = require('../models/PostModel');
+const Category = require('../models/CategoryModel');
 
 module.exports = {
     index: (req, res) => {
         res.render('admin/index');
     },
     getPosts: (req, res) => {
-        Post.find().lean().then(posts => {
+        Post.find().lean().populate('category').then(posts => {
             res.render('admin/posts/index', { posts: posts });
         });
     },
@@ -17,7 +18,8 @@ module.exports = {
             title: req.body.title,
             status: req.body.status,
             description: req.body.description,
-            allowComments: commentsAllowed
+            allowComments: commentsAllowed,
+            category: req.body.category
         });
 
         newPost.save().then(post => {
@@ -26,13 +28,32 @@ module.exports = {
         });
     },
     createPost: (req, res) => {
-        res.render('admin/posts/create');
+        Category.find().lean().then(cats => {
+            res.render('admin/posts/create', { categories: cats });
+        });
     },
     editPost: (req, res) => {
         const id = req.params.id;
-
         Post.findById(id).lean().then(post => {
-            res.render('admin/posts/edit', { post: post });
+            Category.find().lean().then(cats => {
+                res.render('admin/posts/edit', { post: post, categories: cats });
+            });
+        });
+    },
+    editPostSubmit: (req, res) => {
+        const commentsAllowed = req.body.allowComments ? true : false;
+        const id = req.params.id;
+        Post.findById(id).then(post => {
+            post.title = req.body.title,
+                post.status = req.body.status,
+                post.allowComments = req.body.allowComments,
+                post.description = req.body.description,
+                post.category = req.body.category
+
+            post.save().then(updatePost => {
+                req.flash('success-message', `The Post ${updatePost.title} has been updated!`);
+                res.redirect('/admin/posts');
+            });
         });
     },
     deletePost: (req, res) => {
@@ -40,5 +61,24 @@ module.exports = {
             req.flash('success-message', `Post '${deletedPost.title}' has been deleted successfully!`);
             res.redirect('/admin/posts');
         });
+    },
+    getCategories: (req, res) => {
+        Category.find().lean().then(cats => {
+            res.render('admin/category/index', { categories: cats });
+        });
+    },
+    createCategories: (req, res) => {
+        var categoryName = req.body.name;
+        if (categoryName) {
+            const newCategory = new Category({
+                title: categoryName
+            });
+
+            newCategory.save().then(category => {
+                res.status(200).json(category);
+            });
+        }
+
+
     }
 }
