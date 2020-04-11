@@ -10,6 +10,10 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const { selectOption } = require('./config/customFunctions');
+const fileUpload = require('express-fileupload');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
 
 const app = express();
 
@@ -35,7 +39,15 @@ app.use(session({
 
 app.use(flash());
 
+/* Passport initialize */
+app.use(passport.initialize());
+app.use(passport.session());
+
+/* Global variables */
 app.use(globalVariables);
+
+/* File upload middleware */
+app.use(fileUpload());
 
 /* Template Engine */
 app.engine('handlebars', exphbs({ defaultLayout: 'default', helpers: { select: selectOption } }));

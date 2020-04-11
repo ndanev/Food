@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 /* BOOTSTRAP */
 
 .container {
@@ -84,4 +91,20 @@
 
 .section {
     padding: 60px 0;
+}
+
+/* POST CARD */
+
+.post-card-wrapper {
+    color: #333;
+    text-decoration: #333;
+}
+
+.post-card-wrapper:hover {
+    color: #333;
+}
+
+.post-image {
+    margin-bottom: 15px;
+    transition: all .2s;
 }

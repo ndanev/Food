@@ -1,101 +1,29 @@
 {{> default/slider }}
 <section class="section">
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-10">
             <div class="row">
+                {{#each posts}}
                 <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <small>17.01.1993</small>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
+                    <a href="#" class="post-card-wrapper">
+                        <div class="post-card">
+                            <img src="{{file}}" alt="Blog image" class="img-fluid post-image">
+                            <h3 class="post-title">{{title}}</h1>
+                                <small class="post-date">Created {{creationDate}} by Admin</small>
+                                <p>{{description}}</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <small>17.01.1993</small>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div>
-                        <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2020/01/featured-1.jpg"
-                            alt="blog" class="img-fluid">
-                        <h1>Blog 1</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur explicabo vero inventore
-                            aperiam</p>
-                    </div>
-                </div>
+                {{/each}}
             </div>
+        </div>
+        <div class="col-md-2">
+            <h3>Kategorije</h3>
+            <ul>
+                {{#each categories}}
+                <li><a href="#">{{title}}</a></li>
+                {{/each}}
+            </ul>
         </div>
     </div>
 </section>

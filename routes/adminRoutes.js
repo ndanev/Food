@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
+const { isUserAuthenticated } = require('../config/customFunctions');
 
-router.get('/*', (req, res, next) => {
+router.get('/*', isUserAuthenticated, (req, res, next) => {
     req.app.locals.layout = 'admin';
     next();
 });
@@ -21,5 +22,8 @@ router.delete('/posts/delete/:id', adminController.deletePost);
 
 router.get('/category', adminController.getCategories);
 router.post('/category', adminController.createCategories);
+
+router.get('/category/edit/:id', adminController.editCategoriesGetRoute);
+router.post('/category/edit/:id', adminController.editCategoriesPostRoute);
 
 module.exports = router;
