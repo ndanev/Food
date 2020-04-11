@@ -57,8 +57,18 @@ router.post('/login', passport.authenticate('local', { successRedirect: '/admin'
 router.get('/register', defaultController.registerGet);
 router.post('/register', defaultController.registerPost);
 
-router.get('/about', defaultController.aboutGet);
 
+router.get('/post/:id', defaultController.getSinglePost);
+
+router.post('/post/:id', defaultController.submitComment);
+
+router.get('/about', defaultController.aboutGet);
 router.get('/faq', defaultController.faqGet);
+
+router.get('/logout', (req, res) => {
+    req.logOut();
+    req.flash('success-message', 'Logout was successful.');
+    res.redirect('/');
+});
 
 module.exports = router;

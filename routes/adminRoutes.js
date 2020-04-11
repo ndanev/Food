@@ -26,4 +26,6 @@ router.post('/category', adminController.createCategories);
 router.get('/category/edit/:id', adminController.editCategoriesGetRoute);
 router.post('/category/edit/:id', adminController.editCategoriesPostRoute);
 
+router.get('/comment', adminController.getComments);
+
 module.exports = router;

@@ -1,23 +1,30 @@
 {{> default/slider }}
 <section class="section">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-12 mb-3">
+            <h3>Nasa preporuka</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
             <div class="row">
                 {{#each posts}}
                 <div class="col-md-3">
-                    <a href="#" class="post-card-wrapper">
+                    <a href="/post/{{_id}}" class="post-card-wrapper">
                         <div class="post-card">
                             <img src="{{file}}" alt="Blog image" class="img-fluid post-image">
-                            <h3 class="post-title">{{title}}</h1>
+                            <div class="post-card-content">
+                                <h4 class="post-title">{{title}}</h4>
                                 <small class="post-date">Created {{creationDate}} by Admin</small>
                                 <p>{{description}}</p>
+                            </div>
                         </div>
                     </a>
                 </div>
                 {{/each}}
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <h3>Kategorije</h3>
             <ul>
                 {{#each categories}}
