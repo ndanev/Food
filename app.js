@@ -13,9 +13,12 @@ const { selectOption } = require('./config/customFunctions');
 const fileUpload = require('express-fileupload');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const { registerHelper } = require('./config/customFunctions');
 
 
 const app = express();
+
+handlebars.registerHelper('dateFormat', require('handlebars-dateformat'));
 
 /* Configure Mongoose to connect white MongoDB */
 mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -50,7 +53,7 @@ app.use(globalVariables);
 app.use(fileUpload());
 
 /* Template Engine */
-app.engine('handlebars', exphbs({ defaultLayout: 'default', helpers: { select: selectOption } }));
+app.engine('handlebars', exphbs({ defaultLayout: 'default', helpers: { select: selectOption, trimString: registerHelper } }));
 app.set('view engine', 'handlebars');
 
 // override with POST having ?_method=DELETE
@@ -64,6 +67,6 @@ app.use('/admin', adminRoutes);
 
 
 
-app.listen(3000, () => {
-    console.log(`Server has been started on port 3000.`)
+app.listen(PORT, () => {
+    console.log(`Server has been started on port ${PORT}.`)
 });

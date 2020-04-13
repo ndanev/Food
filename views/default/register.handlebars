@@ -13,43 +13,42 @@
     </div>
 </div>
 
-<div class="row mt-5">
+<div class="row">
     <div class="offset-md-3"></div>
     <div class="col-md-6">
-        <div class="text-center">
-            <h3>Register</h3>
+        <div class="form-wapper">
+            <div>
+                <h3>Register</h3>
+            </div>
+            <form action="/register" method="post" class="my-5">
+                <div class="form-group">
+                    <label for="firstName">Ime*</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" aria-describedby="emailHelp"
+                        placeholder="Vase ime">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Prezime*</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" aria-describedby="emailHelp"
+                        placeholder="Vase prezime">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email adresa*</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                        placeholder="Vas email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password*</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Vas password">
+                </div>
+                <div class="form-group">
+                    <label for="passwordConfirm">Potvrdite password*</label>
+                    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
+                        placeholder="Potvrdite password">
+                </div>
+                <button type="submit" class="btn btn-submit">Register</button>
+            </form>
         </div>
-        <form action="/register" method="post" class="my-5">
-            <div class="form-group">
-                <label for="firstName">First name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" aria-describedby="emailHelp"
-                    placeholder="Enter your first name">
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" aria-describedby="emailHelp"
-                    placeholder="Enter your last name">
-            </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <label for="passwordConfirm">Confirm Password</label>
-                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
-                    placeholder="Confirm Password">
-            </div>
-            {{!-- <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Remember password</label>
-            </div> --}}
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
     </div>
     <div class="offset-md-3"></div>
 </div>

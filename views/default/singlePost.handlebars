@@ -5,22 +5,28 @@
             by
             <a href="#">Admin</a>
         </p>
-        <div class="mb-3"><small>Posted on {{post.creationDate}}</small></div>
+        <div class="mb-3"><small>Posted on {{post.creationDate}}</small>
+        </div>
         <img class="img-fluid rounded mb-3" src="{{post.file}}">
         <p class="lead">{{post.description}}</p>
 
-        <!-- Comments Form -->
-        <div class="card my-4">
-            <h5 class="card-header">Leave a Comment:</h5>
-            <div class="card-body">
-                <form action="/post/{{post._id}}" method="POST">
-                    <div class="form-group">
-                        <textarea class="form-control" rows="3" name="comment_body"></textarea>
-                        <input type="hidden" name="id" value="{{post._id}}">
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Comments Form -->
+                <div class="card my-4">
+                    <h6 class="card-header">Ostavite komentar:</h6>
+                    <div class="card-body">
+                        <form action="/post/{{post._id}}" method="POST">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" name="comment_body"></textarea>
+                                <input type="hidden" name="id" value="{{post._id}}">
+                            </div>
+                            <button type="submit" class="btn btn-submit">Dodaj komentar</button>
+                        </form>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                </div>
             </div>
+            <div class="offset-md-5"></div>
         </div>
 
         {{#each post.comments}}
@@ -28,10 +34,9 @@
         <!-- Single Comment -->
         <div class="media mb-4">
             <img width="50px" height="50px" class="d-flex mr-3 rounded-circle img-fluid"
-                src="https://authorpreneur.amymorse.co.uk/wp-content/uploads/2019/01/Positive-outsourcing.-Acid-face.-Happy-Face.-Smiley-Face.jpg"
-                alt="">
+                src="https://authorpreneur.amymorse.co.uk/wp-content/uploads/2019/01/Positive-outsourcing.-Acid-face.-Happy-Face.-Smiley-Face.jpg">
             <div class="media-body">
-                <h5 class="mt-0">{{user.firsName}} {{user.lastName}}</h5>
+                <h5 class="mt-0">{{user.firstName}} {{user.lastName}}</h5>
                 {{body}}
             </div>
         </div>

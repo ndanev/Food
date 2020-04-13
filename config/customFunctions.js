@@ -18,5 +18,8 @@ module.exports = {
         else {
             res.redirect('/login');
         }
-    }
+    },
+    registerHelper: ('trimString', (passedString) => {
+        return theString = passedString.substring(0, 90);
+    })
 };
